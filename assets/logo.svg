@@ -1,0 +1,22 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="325" height="80" viewBox="0 0 325 80">
+  <defs>
+    <linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="gOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF7A00"/>
+      <stop offset="100%" stop-color="#FFB84D"/>
+    </linearGradient>
+    <style>
+      .tag { font-family: Inter, 'JetBrains Mono', Consolas, 'SF Mono', monospace;
+             font-weight: 700; font-size: 46px; }
+    </style>
+  </defs>
+
+  <text x="0" y="55" class="tag" fill="url(#gBlue)">&lt;</text>
+  <text x="40" y="55" class="tag" fill="url(#gBlue)">yahor</text>
+  <text x="175" y="55" class="tag" fill="url(#gOrange)">.dev</text>
+  <text x="300" y="55" class="tag" fill="url(#gBlue)">&gt;</text>
+</svg>
