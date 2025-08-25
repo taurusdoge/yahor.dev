@@ -1,14 +1,14 @@
 import { defineConfig } from 'vite'
-import { compression } from 'vite-plugin-compression'
+import viteCompression from 'vite-plugin-compression'
 
 export default defineConfig({
   plugins: [
-    compression({
+    viteCompression({
       algorithm: 'gzip',
       ext: '.gz',
       deleteOriginFile: false
     }),
-    compression({
+    viteCompression({
       algorithm: 'brotliCompress',
       ext: '.br',
       deleteOriginFile: false
@@ -19,6 +19,7 @@ export default defineConfig({
     cssMinify: true,
     target: 'es2020',
     rollupOptions: {
+      external: ['fsevents'],
       output: {
         manualChunks: {
           vendor: ['vite']
