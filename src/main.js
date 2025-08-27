@@ -1,19 +1,66 @@
-const themeBtns = document.querySelectorAll(".ghost");
+const themeBtns = document.querySelectorAll("#themeToggleDesktop, #themeToggleMobile");
 if (themeBtns) {
   const stored = localStorage.getItem("theme");
   if (stored) {
-    document.documentElement.setAttribute("data-theme", stored);
-    updateLogoTheme(stored);
+    applyTheme(stored);
+  } else {
+    applyTheme("follow-os");
   }
 
   themeBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme");
-      const newTheme = current === "light" ? "dark" : "light";
-      document.documentElement.setAttribute("data-theme", newTheme);
-      localStorage.setItem("theme", newTheme);
-      updateLogoTheme(newTheme);
+      const current = localStorage.getItem("theme") || "follow-os";
+      const themes = ["follow-os", "light", "dark"];
+      const currentIndex = themes.indexOf(current);
+      const newTheme = themes[(currentIndex + 1) % themes.length];
+      
+      if (newTheme === "follow-os") {
+        localStorage.removeItem("theme");
+        document.documentElement.removeAttribute("data-theme");
+        updateThemeButton("follow-os");
+        updateLogoTheme(getEffectiveTheme());
+      } else {
+        localStorage.setItem("theme", newTheme);
+        applyTheme(newTheme);
+      }
     });
+  });
+}
+
+function applyTheme(theme) {
+  if (theme === "follow-os") {
+    document.documentElement.removeAttribute("data-theme");
+    updateThemeButton("follow-os");
+    updateLogoTheme(getEffectiveTheme());
+  } else {
+    document.documentElement.setAttribute("data-theme", theme);
+    updateThemeButton(theme);
+    updateLogoTheme(theme);
+  }
+}
+
+function getEffectiveTheme() {
+  const dataTheme = document.documentElement.getAttribute("data-theme");
+  if (dataTheme) return dataTheme;
+  
+  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+}
+
+function updateThemeButton(theme) {
+  const buttons = document.querySelectorAll("#themeToggleDesktop, #themeToggleMobile");
+  const themeConfig = {
+    "follow-os": { icon: "🌓", label: "Auto" },
+    "light": { icon: "☀️", label: "Light" },
+    "dark": { icon: "🌙", label: "Dark" }
+  };
+  
+  const config = themeConfig[theme];
+  buttons.forEach(btn => {
+    const icon = btn.querySelector(".theme-icon");
+    const label = btn.querySelector(".theme-label");
+    if (icon) icon.textContent = config.icon;
+    if (label) label.textContent = config.label;
+    btn.setAttribute("aria-label", `Current theme: ${config.label}. Click to cycle.`);
   });
 }
 

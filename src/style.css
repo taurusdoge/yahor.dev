@@ -632,6 +632,18 @@ p {
   text-decoration: underline;
 }
 
+.theme-label {
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .theme-label {
+    display: none;
+  }
+}
+
 .site-footer {
   text-align: center;
   color: var(--muted);
