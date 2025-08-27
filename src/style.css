@@ -29,7 +29,7 @@
     --muted: #656d76;
     --card: rgba(175, 184, 193, 0.12);
     --outline: rgba(175, 184, 193, 0.2);
-    --accent: #1a1f3a;
+    --accent: #1e3a8a;
     --shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 0.5rem 2rem rgba(0, 0, 0, 0.12);
   }
@@ -626,7 +626,6 @@ p {
 
 .contact-info a {
   color: var(--accent);
-  text-decoration: none;
 }
 
 .contact-info a:hover {
