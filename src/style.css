@@ -227,8 +227,24 @@ body {
   border: 0.0625rem solid var(--outline);
   color: var(--fg);
   padding: 0.5rem 0.625rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ghost:hover {
+  transform: translateY(-0.125rem);
+  background: var(--bg-tertiary);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.ghost:active {
+  transform: translateY(0);
 }
 
 .ghost.desktop-only {
