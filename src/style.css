@@ -421,12 +421,6 @@ p {
   transition: var(--transition);
 }
 
-.card:hover {
-  transform: translateY(-0.25rem);
-  border-color: var(--accent);
-  box-shadow: var(--shadow-lg);
-}
-
 .thumb {
   width: 100%;
   aspect-ratio: 1;
@@ -540,12 +534,6 @@ p {
   border-radius: var(--radius);
   background: var(--bg-secondary);
   transition: var(--transition);
-}
-
-.year-block:hover {
-  border-color: var(--accent);
-  transform: translateY(-0.125rem);
-  box-shadow: var(--shadow);
 }
 
 .year-block h4 {
